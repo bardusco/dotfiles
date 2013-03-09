@@ -1,3 +1,20 @@
 [user]
 	name = Danilo Bardusco
 	email = danilo@bardusco.com
+[github]
+	user = bardusco
+[alias]
+  	co = checkout
+  	ci = commit
+  	st = status
+  	br = branch
+  	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[color]
+	ui = true
+	diff = true
+	branch = true
+	status = true
+[mergetool]
+	keepBackup = true
+[push]
+	default = current
