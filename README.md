@@ -1,7 +1,5 @@
-dotfiles
-========
-
 Bardusco's dotfiles
+===================
 
 This repo is compatible with [homeshick](https://github.com/andsens/homeshick).
 
