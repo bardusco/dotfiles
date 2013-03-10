@@ -1,5 +1,7 @@
 #!/bin/bash -l
 
+source ~/.bashrc
+
 shopt -s expand_aliases
 
 alias homesick 2>/dev/null >/dev/null 
