@@ -1,0 +1,27 @@
+# bash-completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
+# nodejs
+export NODE_PATH='/usr/local/lib/node_modules'
+
+# elasticsearch
+export ES_CLASSPATH=~/Projects/elasticsearch/bin/
+
+# maven
+export M2_HOME=/usr/local/apache-maven/apache-maven-3.0.4
+export M2=$M2_HOME/bin
+
+# PATH
+# PATH > maven
+export PATH=$M2:$PATH
+# PATH > elasticsearch
+export PATH=$PATH:~/Projects/elasticsearch/bin
+# PATH > rvm
+export PATH=$PATH:~/.rvm/bin 
+# PATH > Python 2.7
+export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/2.7/bin
+
+# Virtualenv
+source /Library/Frameworks/Python.framework/Versions/2.7/bin/virtualenvwrapper.sh
