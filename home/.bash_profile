@@ -89,4 +89,6 @@ export PATH=~/.bin:$PATH
 # PATH > my scripts
 export PATH=~/Dropbox/Scripts:$PATH
 
+# powerline
+export PYTHONPATH=$PYTHONPATH:~/.local/lib/python2.7/site-packages/
 source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
