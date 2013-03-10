@@ -1,10 +1,15 @@
-#!/bin/bash
+#!/bin/bash -l
 
-if [ alias homesick 2>/dev/null >/dev/null ]
+shopt -s expand_aliases
+
+alias homesick 2>/dev/null >/dev/null 
+
+if [ $? -eq 0 ]
 then
 	homesick clone git://github.com/bardusco/dotfiles.git && homesick symlink dotfiles
-	cd ~/.homesick/repos/dotfiles/.git/hooks && ln -s ../../git_hooks/post_chekout
-	git submodules update
-else:
+	ln -sf ~/.homesick/repos/dotfiles/git_hooks/post_chekout ~/.homesick/repos/dotfiles/.git/hooks/.
+	cd ~/.homesick/repos/dotfiles
+	git submodule init && git submodule update
+else
 	echo "Homesick not found!!"
 fi
