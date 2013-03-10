@@ -1,4 +1,5 @@
 syntax on
+set number
 set background=dark
 set nocompatible               " be iMproved
  filetype off                   " required!
@@ -16,6 +17,8 @@ set nocompatible               " be iMproved
  Bundle 'tpope/vim-fugitive'
  Bundle 'Lokaltog/vim-easymotion'
  Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+ Bundle 'Lokaltog/vim-powerline'
+ Bundle 'altercation/vim-colors-solarized'
  "Bundle 'tpope/vim-rails.git'
  " vim-scripts repos
  "Bundle 'L9'
@@ -33,3 +36,15 @@ set nocompatible               " be iMproved
  "
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Bundle command are not allowed..
+colorscheme solarized
+
+"Setting up tab settings
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set tabpagemax=20
+set showtabline=4
+set autoindent
+set expandtab
+set smartindent
+set smarttab
