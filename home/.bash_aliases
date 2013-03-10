@@ -1,23 +1,20 @@
 #!/bin/bash
 
-# colors 
-if [ "$TERM" != "dumb" ] && [ `which dircolors` ]; then
-    eval "`dircolors -b ~/.dircolors`"
-fi
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+if [ "$TERM" != "dumb" ] && [ -f ~/.dircolors ]; then
+    alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
     if [ "$OS" == "ubuntu" ]; then
         alias ls='ls --color=auto'
         alias grep='grep --color=auto'
+        eval "$(dircolors -b ~/.dircolors)"
     elif [ "$OS" == "osx" ]; then
         # and alias ls to GNUs alias
         # need to do: brew install coreutils
         alias dircolors='gdircolors'
         alias ls='gls --color=auto'
-        alias grep='ggrep --color=auto'
+        eval "$(gdircolors -b ~/.dircolors)"
     fi
 fi
 
