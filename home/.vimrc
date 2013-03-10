@@ -5,6 +5,8 @@ set background=dark
 set encoding=utf-8
 set laststatus=2
 set ambiwidth=single
+set fillchars+=stl:\ ,stlnc:\
+set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
 
 set nocompatible               " be iMproved
  filetype off                   " required!
@@ -22,7 +24,7 @@ set nocompatible               " be iMproved
  Bundle 'tpope/vim-fugitive'
  Bundle 'Lokaltog/vim-easymotion'
  Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
- Bundle 'Lokaltog/vim-powerline'
+ "Bundle 'Lokaltog/vim-powerline'
  Bundle 'altercation/vim-colors-solarized'
  "Bundle 'tpope/vim-rails.git'
  " vim-scripts repos
