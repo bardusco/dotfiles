@@ -20,6 +20,7 @@ fi
 if [ `which pip` ]
 then
     pip install --install-option="--prefix=~/.local/" git+git://github.com/Lokaltog/powerline
+    pip install psutil
 else
     echo "please install python pip and re-run this setup"
 fi
