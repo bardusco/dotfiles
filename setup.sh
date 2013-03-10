@@ -15,3 +15,11 @@ then
 else
 	echo "Homesick not found!!"
 fi
+
+# install porwerline to user
+if [ `which pip` ]
+then
+    pip install --install-option="--prefix=~/.local/" git+git://github.com/Lokaltog/powerline
+else
+    echo "please install python pip and re-run this setup"
+fi
