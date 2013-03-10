@@ -7,5 +7,5 @@ fi
 if [ -f .vimrc ] &&
   git diff --name-only $old $2 | egrep -q '^\.vimrc$'
 then
-  vim +BundleInstall! +BundleClean +q -
+  vim +BundleInstall! +BundleClean +qall
 fi
