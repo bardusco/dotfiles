@@ -4,6 +4,8 @@ if [ $1 = 0000000000000000000000000000000000000000 ]; then
 else
   old=$1
 fi
+echo "verifying .vimrc"
+git diff --name-only $old $2 | egrep -q '^\.vimrc$'
 if [ -f .vimrc ] &&
   git diff --name-only $old $2 | egrep -q '^\.vimrc$'
 then
