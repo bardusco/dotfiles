@@ -57,7 +57,6 @@ export HISTSIZE=1000
 export HISTFILESIZE=2000
 export CLICOLOR=true
 export LSCOLORS=gxfxcxdxbxegedabagacad
-export PS1='\[\033[01;32m\]\w\[\e[m\]\[\e[1;34m\]$(__bundler_ps1 " [%s]")$(__git_ps1 )\[\e[m\]\[\e[m\]\$ '
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -79,6 +78,8 @@ export INPUTRC='~/.inputrc'
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+export PS1='\[\033[01;32m\]\w\[\e[m\]\[\e[1;34m\]$(__bundler_ps1 " [%s]")$(__git_ps1 )\[\e[m\]\[\e[m\]\$ '
 
 # OS bash_profile
 source ~/.bash_profile-${OS}
