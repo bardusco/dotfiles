@@ -16,11 +16,19 @@ else
 	echo "Homesick not found!!"
 fi
 
-# install porwerline to user
+# install porwerline
 if [ `which pip` ]
 then
-    pip install --install-option="--prefix=~/.local/" git+git://github.com/Lokaltog/powerline
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        sudo apt-get install python-dev mercurial
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        brew install libgit2 mercurial
+    else
+        exit
+    fi
     pip install psutil
+    pip install pygit2
+    pip install --install-option="--prefix=~/.local/" git+git://github.com/Lokaltog/powerline
 else
     echo "please install python pip and re-run this setup"
 fi
