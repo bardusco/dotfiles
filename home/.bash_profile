@@ -88,3 +88,5 @@ source ~/.bash_profile-${OS}
 export PATH=~/.bin:$PATH
 # PATH > my scripts
 export PATH=~/Dropbox/Scripts:$PATH
+
+source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
