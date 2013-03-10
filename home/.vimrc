@@ -1,6 +1,11 @@
 syntax on
 set number
 set background=dark
+" vim-powerline
+set encoding=utf-8
+set laststatus=2
+set ambiwidth=single
+
 set nocompatible               " be iMproved
  filetype off                   " required!
 
