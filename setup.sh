@@ -1,12 +1,6 @@
 #!/bin/bash -l
 
-source ~/.bashrc
-
-shopt -s expand_aliases
-
-alias homesick 2>/dev/null >/dev/null 
-
-if [ $? -eq 0 ]
+if [ -d ~/.homesick ]
 then
 	homesick clone git://github.com/bardusco/dotfiles.git && homesick symlink dotfiles
 	ln -sf ~/.homesick/repos/dotfiles/git_hooks/post-merge ~/.homesick/repos/dotfiles/.git/hooks/.
@@ -17,18 +11,19 @@ else
 fi
 
 # install porwerline
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    sudo apt-get install python-dev mercurial pip
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    brew install libgit2 mercurial
+else
+    exit
+fi
+
 if [ `which pip` ]
 then
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        sudo apt-get install python-dev mercurial
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-        brew install libgit2 mercurial
-    else
-        exit
-    fi
     pip install psutil
     pip install pygit2
     pip install --install-option="--prefix=~/.local/" git+git://github.com/Lokaltog/powerline
 else
-    echo "please install python pip and re-run this setup"
+    echo "python pip not found. Please, install it and re-run setup.sh"
 fi
