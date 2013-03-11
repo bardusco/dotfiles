@@ -1,1 +1,5 @@
 set editing-mode vi
+# for Ctrl+l clear screen in edit mode
+$if Bash
+"\C-l": "\e\C-la"
+$endif
