@@ -28,8 +28,8 @@ set nocompatible               " be iMproved
  Bundle 'altercation/vim-colors-solarized'
  "Bundle 'tpope/vim-rails.git'
  " vim-scripts repos
- "Bundle 'L9'
- "Bundle 'FuzzyFinder'
+ Bundle 'L9'
+ Bundle 'FuzzyFinder'
  " non github repos
  "Bundle 'git://git.wincent.com/command-t.git'
 
