@@ -1,0 +1,12 @@
+set mbox_type=maildir
+set mbox="~/mail/inbox/"
+set spoolfile="~/mail/inbox/"
+set folder="~/mail/"
+set record="~/mail/sent/"
+set postponed="~/mail/postponed/"
+#set smtp_url="smtp://smtp.orange.fr:25"
+set from="danilo@bardusco.com"
+set realname="Danilo Bardusco"
+set sendmail="/usr/sbin/ssmtp"
+color index brightyellow default ~N
+color index brightred default ~D
