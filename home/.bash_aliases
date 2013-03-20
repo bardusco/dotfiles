@@ -31,5 +31,11 @@ alias ts='date +%Y%m%d%H%M%S'
 # Alias > tmxu
 alias tmux="TERM=xterm-256color tmux"
 
+# python httpserver
+alias http-server='python -m SimpleHTTPServer'
+
+# vai para o diretorio do dotfiles
+alias cddot='cd ~/.homesick/repos/dotfiles'
+
 # Alias > homesick
 alias homesick=$HOME/.homeshick
