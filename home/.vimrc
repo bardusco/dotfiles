@@ -30,6 +30,7 @@ set nocompatible               " be iMproved
  " vim-scripts repos
  Bundle 'L9'
  Bundle 'FuzzyFinder'
+ Bundle 'jnwhiteh/vim-golang'
  " non github repos
  "Bundle 'git://git.wincent.com/command-t.git'
 
@@ -55,3 +56,6 @@ set autoindent
 set expandtab
 set smartindent
 set smarttab
+
+"GOLANG
+set rtp+=$GOROOT/misc/vim
