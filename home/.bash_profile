@@ -39,6 +39,7 @@ fi
 
 # golang
 export GOPATH=~/Projects/gocode
+export PATH=$PATH:/usr/local/go/bin
 
 # Virtualenv
 export PROJECT_HOME=$HOME/Projects
