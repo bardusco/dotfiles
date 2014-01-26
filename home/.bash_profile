@@ -39,7 +39,7 @@ fi
 
 # golang
 export GOPATH=~/Projects/gocode
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/Projects/gocode/bin
 
 # Virtualenv
 export PROJECT_HOME=$HOME/Projects
@@ -82,6 +82,9 @@ fi
 
 export PS1='\[\033[01;32m\]\w\[\e[m\]\[\e[1;34m\]$(__bundler_ps1 " [%s]")$(__git_ps1 )\[\e[m\]\[\e[m\]\$ '
 
+# Private envs
+source ~/Dropbox/Private/.bash_private
+
 # OS bash_profile
 source ~/.bash_profile-${OS}
 
@@ -94,3 +97,17 @@ export PATH=~/Dropbox/Scripts:$PATH
 export PATH=~/.local/bin:$PATH
 export PYTHONPATH=$PYTHONPATH:~/.local/lib/python2.7/site-packages/
 source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+
+##
+# Your previous /Users/bardusco/.bash_profile file was backed up as /Users/bardusco/.bash_profile.macports-saved_2013-05-18_at_12:08:45
+##
+
+# MacPorts Installer addition on 2013-05-18_at_12:08:45: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH

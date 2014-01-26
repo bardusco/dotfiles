@@ -11,6 +11,9 @@ set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
 set nocompatible               " be iMproved
  filetype off                   " required!
 
+ " format JSON
+ map j !python -m json.tool
+
  set rtp+=~/.vim/bundle/vundle/
  call vundle#rc()
 
