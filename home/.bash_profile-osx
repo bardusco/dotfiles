@@ -7,7 +7,7 @@ fi
 export NODE_PATH='/usr/local/lib/node_modules'
 
 # elasticsearch
-export ES_CLASSPATH=~/Projects/elasticsearch/bin/
+export ES_CLASSPATH=~/Projects/elasticsearch/bin
 
 # maven
 export M2_HOME=/usr/local/apache-maven/apache-maven-3.0.4
@@ -23,9 +23,9 @@ export PATH=$PATH:~/.rvm/bin
 # PATH > Python 2.7
 export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 # Por conta do eclipse para android
-export PATH=/opt/local/bin:$PATH
+#export PATH=/opt/local/bin:$PATH
 # Android SDK
-export PATH=$PATH:/Users/bardusco/Projects/android-sdk-macosx/tools/:/Users/bardusco/Projects/android-sdk-macosx/platform-tools/:/Users/bardusco/Projects/android-sdk-macosx/tools/proguard/bin/:/Users/bardusco/Projects/android-sdk-macosx/build-tools/17.0.0/
+export PATH=$PATH:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/platform-tools:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/tools:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/tools/proguard/bin:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/build-tools/17.0.0:/usr/local/apache-ant-1.9.3/bin
 
 # Virtualenv
 source /Library/Frameworks/Python.framework/Versions/2.7/bin/virtualenvwrapper.sh
@@ -34,4 +34,8 @@ source /Library/Frameworks/Python.framework/Versions/2.7/bin/virtualenvwrapper.s
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 # DOCKER emulated with Virtualbox
-export DOCKER_HOST=localhost
+export DOCKER_HOST=tcp://localhost:4243
+
+# Priorizando o PATH para o brew
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
