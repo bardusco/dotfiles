@@ -7,3 +7,5 @@ To install it, just do:
 
 	curl -sL https://raw.github.com/bardusco/dotfiles/master/setup.sh|bash
 
+Configure fonts:
+http://powerline.readthedocs.org/en/latest/installation/osx.html
