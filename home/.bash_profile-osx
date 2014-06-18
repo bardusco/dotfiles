@@ -28,7 +28,7 @@ export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 export PATH=$PATH:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/platform-tools:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/tools:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/tools/proguard/bin:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/build-tools/17.0.0:/usr/local/apache-ant-1.9.3/bin
 
 # Virtualenv
-source /Library/Frameworks/Python.framework/Versions/2.7/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh
 
 # JDK7
 export JAVA_HOME=$(/usr/libexec/java_home)

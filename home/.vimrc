@@ -47,7 +47,7 @@ set nocompatible               " be iMproved
  "
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Bundle command are not allowed..
-colorscheme solarized
+colorscheme default
 
 "Setting up tab settings
 set tabstop=4
