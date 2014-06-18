@@ -1,23 +1,13 @@
 #!/bin/bash -l
 
-if [ -d ~/.homesick ]
-then
-	source ~/.homesick/repos/homeshick/homeshick.sh
-	homeshick clone git://github.com/bardusco/dotfiles.git && homeshick symlink dotfiles
-	ln -sf ~/.homesick/repos/dotfiles/git_hooks/post-merge ~/.homesick/repos/dotfiles/.git/hooks/.
-	cd ~/.homesick/repos/dotfiles
-	git submodule init && git submodule update
-else
-	echo "Homesick not found!!"
-fi
-
 # install porwerline ang gnu command line utilities on MAC
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    sudo apt-get install python-dev mercurial python-pip
+    sudo apt-get install python-dev mercurial python-pip git
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # http://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
     brew tap homebrew/dupes
     brew install libgit2 
+    brew install git
     brew install mercurial 
     brew install coreutils
     brew install binutils
@@ -50,3 +40,15 @@ then
 else
     echo "python pip not found. Please, install it and re-run setup.sh"
 fi
+
+if [ -d ~/.homesick ]
+then
+	source ~/.homesick/repos/homeshick/homeshick.sh
+	homeshick clone git://github.com/bardusco/dotfiles.git && homeshick symlink dotfiles
+	ln -sf ~/.homesick/repos/dotfiles/git_hooks/post-merge ~/.homesick/repos/dotfiles/.git/hooks/.
+	cd ~/.homesick/repos/dotfiles
+	git submodule init && git submodule update
+else
+	echo "Homesick not found!!"
+fi
+
