@@ -3,7 +3,7 @@ Bardusco's dotfiles
 
 This repo is compatible with [homeshick](https://github.com/andsens/homeshick), so please make sure to install it first.
 
-To install it, just do:
+and then just do:
 
 	curl -sL https://raw.github.com/bardusco/dotfiles/master/setup.sh|bash
 
