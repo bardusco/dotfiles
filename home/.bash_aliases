@@ -38,4 +38,4 @@ alias http-server='python -m SimpleHTTPServer'
 alias cddot='cd ~/.homesick/repos/dotfiles'
 
 # Alias > homesick
-alias homesick=$HOME/.homeshick
+#alias homesick=$HOME/.homeshick

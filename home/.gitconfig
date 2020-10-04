@@ -33,6 +33,7 @@
     untracked = cyan
 [diff]
     tool = vimdiff
+    colorMoved = default
 [difftool "diffmerge"]
     cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [merge]
@@ -46,3 +47,27 @@
     cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
     trustExitCode = true
     keepBackup = false
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = side-by-side line-numbers decorations
+    syntax-theme = Sublime Snazzy
+    plus-style = syntax "#0C400B"
+    minus-style = syntax "#390706"
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = cyan box ul
+
+[delta "line-numbers"]
+    line-numbers-left-style = cyan
+    line-numbers-right-style = cyan
+    line-numbers-minus-style = 124
+    line-numbers-plus-style = 28

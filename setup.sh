@@ -2,7 +2,21 @@
 
 # install porwerline ang gnu command line utilities on MAC
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    sudo apt-get install python-dev mercurial python-pip git
+    sudo apt-get install python-dev mercurial python-pip git fzf npm zsh zsh-syntax-highlighting neovim virtualenv fd-find
+    mkdir ~/.virtualenvs 
+    virtualenv ~/.virtualenvs/neovim2 -p python2
+    virtualenv ~/.virtualenvs/neovim3 -p python3
+    yes|sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/wfxr/forgit.git $HOME/forgit
+    wget https://github.com/dandavison/delta/releases/download/0.4.3/git-delta_0.4.3_amd64.deb && sudo dpkg -i git-delta_0.4.3_amd64.deb
+    wget https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb && sudo dpkg -i bat_0.16.0_amd64.deb
+    if [ ! -d ~/.fonts ]
+        mkdir ~/.fonts
+    fi
+    wget https://github.com/Falkor/dotfiles/raw/master/fonts/SourceCodePro%2BPowerline%2BAwesome%2BRegular.ttf -O ~/.fonts/SourceCodePro+Powerline+Awesome+Regular.ttf
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # http://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
     brew tap homebrew/dupes
