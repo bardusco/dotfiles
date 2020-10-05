@@ -2,7 +2,6 @@
 
 set -e
 
-CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
 
 DOTBOT_BIN="bin/dotbot"
@@ -12,4 +11,23 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+# OS specific commands
+case `uname` in
+  Darwin)
+    CONFIG="install.conf.darwin.yaml"
+  ;;
+  Linux)
+    CONFIG="install.conf.debian.yaml"
+  ;;
+esac
+
+echo
+echo "========== RUNNING OS SPECIFIC COMMANDS =========="
+echo
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -c "${CONFIG}" -d home
+
+echo
+echo "========== RUNNING COMMON COMMANDS =========="
+echo
+CONFIG="install.conf.yaml"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -c "${CONFIG}" -d home
