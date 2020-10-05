@@ -12,7 +12,7 @@
     - ~/.virtualenvs
 
 - shell:
-  - [sudo apt-get install -y python2 python3 git fzf npm zsh zsh-syntax-highlighting neovim virtualenv fd-find wget, Installing dependencies]
+  - [sudo apt-get install -y dconf-cli python2 python3 git fzf npm zsh zsh-syntax-highlighting neovim virtualenv fd-find wget, Installing dependencies]
   - [npm install yarn, Installing yarn]
   - [git submodule update --init --recursive, Installing submodules]
   - [git clone https://github.com/zsh-users/zsh-autosuggestions .oh-my-zsh/custom/plugins/zsh-autosuggestions, Installing zsh-autosuggestions]
@@ -21,6 +21,7 @@
   - [wget https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb && sudo dpkg -i bat_0.16.0_amd64.deb, Installing bat]
   - [virtualenv ~/.virtualenvs/neovim2 -p python2, Installing virtualenv2 for neovim]
   - [virtualenv ~/.virtualenvs/neovim3 -p python3, Installing virtualenv3 for neovim]
+  - [dconf load /org/gnome/terminal/ < gnome-terminal.pref, configuring gnome-terminal]
 
 - link:
     ~/.tmux.conf                                 : .tmux.conf

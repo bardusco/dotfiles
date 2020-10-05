@@ -1,0 +1,9 @@
+[legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+foreground-color='rgb(131,148,150)'
+visible-name='bardusco'
+use-system-font=false
+use-theme-colors=false
+font='MesloLGS NF 10'
+background-color='rgb(0,43,54)'
+audible-bell=true
+scrollback-lines=100000
