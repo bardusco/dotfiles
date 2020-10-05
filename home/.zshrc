@@ -78,8 +78,6 @@ export ZSH="$HOME/.oh-my-zsh"
 plugins=(
     git
     zsh-autosuggestions
-    zsh-syntax-highlighting
-#    forgit
 )
 
 source ~/.oh-my-zsh.sh
@@ -119,7 +117,6 @@ export FZF_DEFAULTS_OPS="--extended"
 #    --preview-window=:hidden 
 export FZF_DEFAULT_OPTS="
     --layout=reverse
-    --info=inline
     --height=80%
     --multi
     --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
@@ -134,7 +131,7 @@ export FZF_DEFAULT_OPTS="
 case `uname` in
   Darwin)
     # commands for OS X go here
-    export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS" --pointer='▶' --marker='✓'"
+    export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS" --pointer='▶' --marker='✓' --info=inline"
     export FZF_DEFAULT_COMMAND="fd --type f"
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   ;;

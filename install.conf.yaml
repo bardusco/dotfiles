@@ -10,7 +10,7 @@
     - ~/.virtualenvs
 
 - shell:
-  - [sudo apt-get install python2 python3 git fzf npm zsh zsh-syntax-highlighting neovim virtualenv fd-find ruby wget, Installing dependencies]
+  - [sudo apt-get install -y python2 python3 git fzf npm zsh zsh-syntax-highlighting neovim virtualenv fd-find wget, Installing dependencies]
   - [npm install yarn, Installing yarn]
   - [git submodule update --init --recursive, Installing submodules]
   - [git clone https://github.com/zsh-users/zsh-autosuggestions .oh-my-zsh/custom/plugins/zsh-autosuggestions, Installing zsh-autosuggestions]
@@ -43,3 +43,7 @@
     ~/.vimrc                                     : .vimrc
     ~/.zshrc                                     : .zshrc
     ~/powerlevel10k                              : powerlevel10k
+    ~/.fonts                                     : .fonts
+
+- shell:
+  - [fc-cache -f -v, Updating font cache]
