@@ -1,0 +1,45 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- create:
+    - ~/.config/nvim
+    - ~/.ipython/profile_default
+    - ~/.virtualenvs
+
+- shell:
+  - [sudo apt-get install python2 python3 git fzf npm zsh zsh-syntax-highlighting neovim virtualenv fd-find ruby wget, Installing dependencies]
+  - [git submodule update --init --recursive, Installing submodules]
+  - [git clone https://github.com/zsh-users/zsh-autosuggestions .oh-my-zsh/custom/plugins/zsh-autosuggestions, Installing zsh-autosuggestions]
+  - [git clone https://github.com/zsh-users/zsh-syntax-highlighting.git .oh-my-zsh/custom/plugins/zsh-syntax-highlighting, Installing zsh-syntax-highlighting]
+  - [git clone https://github.com/wfxr/forgit.git $HOME/forgit, Installing forgit]
+  - [wget https://github.com/dandavison/delta/releases/download/0.4.3/git-delta_0.4.3_amd64.deb && sudo dpkg -i git-delta_0.4.3_amd64.deb, Installing git-delta]
+  - [wget https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb && sudo dpkg -i bat_0.16.0_amd64.deb, Installing bat]
+  - [virtualenv ~/.virtualenvs/neovim2 -p python2, Installing virtualenv2 for neovim]
+  - [virtualenv ~/.virtualenvs/neovim3 -p python3, Installing virtualenv3 for neovim]
+
+- link:
+    ~/.tmux.conf                                 : .tmux.conf
+    ~/.bash_aliases                              : .bash_aliases
+    ~/.bash_functions                            : .bash_functions
+    ~/.bash_profile                              : .bash_profile
+    ~/.bash_profile-osx                          : .bash_profile-osx
+    ~/.bash_profile-ubuntu                       : .bash_profile-ubuntu
+    ~/.bashrc                                    : .bashrc
+    ~/.config/nvim/init.vim                      : .config/nvim/init.vim
+    ~/.dircolors                                 : .dircolors
+    ~/.gdbinit                                   : .gdbinit
+    ~/.gitconfig                                 : .gitconfig
+    ~/.gitignore                                 : .gitignore
+    ~/.inputrc                                   : .inputrc
+    ~/.ipython/profile_default/ipython_config.py : .ipython/profile_default/ipython_config.py
+    ~/.muttrc                                    : .muttrc
+    ~/.oh-my-zsh.sh                              : .oh-my-zsh.sh
+    ~/.oh-my-zsh                                 : .oh-my-zsh
+    ~/.p10k.zsh                                  : .p10k.zsh
+    ~/.tmux.conf                                 : .tmux.conf
+    ~/.vimrc                                     : .vimrc
+    ~/.zshrc                                     : .zshrc
+    ~/powerlevel10k                              : powerlevel10k

@@ -79,10 +79,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
     git
     zsh-autosuggestions
+    zsh-syntax-highlighting
 #    forgit
 )
 
-source $ZSH/oh-my-zsh.sh
+source ~/.oh-my-zsh.sh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # User configuration
 
@@ -150,5 +152,3 @@ export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-ran
 alias vim=nvim
 
 source $HOME/forgit/forgit.plugin.zsh
-
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
