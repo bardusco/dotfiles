@@ -2,7 +2,8 @@
 
 # install porwerline ang gnu command line utilities on MAC
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    sudo apt-get install python-dev mercurial python-pip git fzf npm zsh zsh-syntax-highlighting neovim virtualenv fd-find
+    sudo apt-get install python-dev mercurial python-pip git fzf npm zsh zsh-syntax-highlighting neovim virtualenv fd-find ruby
+    gem install homesick
     mkdir ~/.virtualenvs 
     virtualenv ~/.virtualenvs/neovim2 -p python2
     virtualenv ~/.virtualenvs/neovim3 -p python3
@@ -41,6 +42,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install wdiff --with-gettext
     brew install wget
     brew install htop
+    brew install ruby
+    gem install homesick
 else
     exit
 fi
@@ -57,8 +60,7 @@ fi
 
 if [ -d ~/.homesick ]
 then
-	source ~/.homesick/repos/homeshick/homeshick.sh
-	homeshick clone git://github.com/bardusco/dotfiles.git && homeshick symlink dotfiles
+	homesick clone git://github.com/bardusco/dotfiles.git && homesick link dotfiles
 	ln -sf ~/.homesick/repos/dotfiles/git_hooks/post-merge ~/.homesick/repos/dotfiles/.git/hooks/.
 	cd ~/.homesick/repos/dotfiles
 	git submodule init && git submodule update
