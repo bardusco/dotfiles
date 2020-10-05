@@ -1,6 +1,8 @@
 - defaults:
     link:
-      relink: true
+        relink: true
+    shell:
+        stderr: true
 
 - clean: ['~']
 
