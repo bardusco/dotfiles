@@ -43,3 +43,17 @@ export DOCKER_HOST=tcp://localhost:4243
 # Priorizando o PATH para o brew
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
+# MacPorts Installer addition on 2013-05-18_at_12:08:45: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+# Setting PATH for Python 2.7
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
+
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS" --pointer='▶' --marker='✓' --info=inline"
+export FZF_DEFAULT_COMMAND="fd --type f"
+
+# gnu utilities first in PATH
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"

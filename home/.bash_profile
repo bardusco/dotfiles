@@ -54,13 +54,15 @@ export VISUAL='vim'
 # ... or force ignoredups and ignorespace
 export HISTCONTROL=ignoredups:ignorespace
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-export HISTSIZE=1000
-export HISTFILESIZE=2000
-export CLICOLOR=true
-export LSCOLORS=gxfxcxdxbxegedabagacad
-
+unset HISTFILESIZE
+HISTSIZE=3000
+PROMPT_COMMAND="history -a"
+export HISTSIZE PROMPT_COMMAND
 # append to the history file, don't overwrite it
 shopt -s histappend
+
+export CLICOLOR=true
+export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -95,19 +97,30 @@ export PATH=~/Dropbox/Scripts:$PATH
 
 # powerline
 export PATH=~/.local/bin:$PATH
-export PYTHONPATH=$PYTHONPATH:~/.local/lib/python2.7/site-packages/
+export PYTHONPATH=$PYTHONPATH:~/.local/lib/python3.8/site-packages
 source ~/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
 
-##
-# Your previous /Users/bardusco/.bash_profile file was backed up as /Users/bardusco/.bash_profile.macports-saved_2013-05-18_at_12:08:45
-##
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# MacPorts Installer addition on 2013-05-18_at_12:08:45: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
+export FZF_DEFAULTS_OPS="--extended"
+#    --preview-window=:hidden 
+export FZF_DEFAULT_OPTS="
+    --layout=reverse
+    --height=80%
+    --multi
+    --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+    --color='hl:148,hl+:154,pointer:032,marker:010,bg+:237'
+    --bind '?:toggle-preview'
+    --bind 'ctrl-a:select-all'
+    --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+    --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
+    --prompt='∼ '
+"
 
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
-# Setting PATH for Python 2.7
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-export PATH
+alias vim=nvim
+
+source $HOME/forgit/forgit.plugin.zsh
+

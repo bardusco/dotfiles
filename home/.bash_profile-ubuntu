@@ -44,3 +44,5 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+export FZF_DEFAULT_COMMAND="fdfind --type f"
