@@ -1,0 +1,29 @@
+- defaults:
+      link:
+          relink: true
+      shell:
+          stderr: true
+
+- clean: ["~"]
+
+- brew:
+      - coreutils
+      - binutils
+      - diffutils
+      - ed
+      - findutils
+      - gawk
+      - git
+      - gnu-indent
+      - gnu-sed
+      - gnu-tar
+      - gnu-which
+      - gnutls
+      - grep
+      - gzip
+      - htop
+      - libgit2
+      - screen
+      - watch
+      - wdiff
+      - wget

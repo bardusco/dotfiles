@@ -26,6 +26,8 @@ export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 #export PATH=/opt/local/bin:$PATH
 # Android SDK
 export PATH=$PATH:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/platform-tools:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/tools:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/tools/proguard/bin:/Users/bardusco/Projects/adt-bundle-mac-x86_64-20131030/sdk/build-tools/17.0.0:/usr/local/apache-ant-1.9.3/bin
+# gnu utilities first in path
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 

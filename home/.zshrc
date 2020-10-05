@@ -134,6 +134,8 @@ case `uname` in
     export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS" --pointer='▶' --marker='✓' --info=inline"
     export FZF_DEFAULT_COMMAND="fd --type f"
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    # gnu utilities first in PATH
+    export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
   ;;
   Linux)
     # commands for Linux go here
