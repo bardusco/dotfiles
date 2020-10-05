@@ -1,6 +1,10 @@
-[submodule "home/.vim/bundle/vundle"]
-	path = home/.vim/bundle/vundle
-	url = https://github.com/gmarik/vundle.git
-[submodule "home/.vim/bundle/Vundle.vim"]
-	path = home/.vim/bundle/Vundle.vim
-	url = https://github.com/gmarik/Vundle.vim.git
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+	ignore = dirty
+[submodule "home/.oh-my-zsh"]
+	path = home/.oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule "home/powerlevel10k"]
+	path = home/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git

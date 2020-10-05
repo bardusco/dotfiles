@@ -1,0 +1,19 @@
+- defaults:
+    link:
+        relink: true
+    shell:
+        stderr: true
+
+- clean: ['~']
+
+- link:
+    ~/.fonts: .fonts
+
+- shell:
+    - [dconf load /org/gnome/terminal/ < gnome-terminal.pref, configuring gnome-terminal]
+    - [fc-cache -f -v, Updating font cache]
+    - [curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list]
+    - [sudo apt-get update]
+    - [sudo apt-get install -y dconf-cli python2 python3 git fzf npm zsh zsh-syntax-highlighting neovim virtualenv fd-find wget yarn, Installing dependencies]
+    - [wget https://github.com/dandavison/delta/releases/download/0.4.3/git-delta_0.4.3_amd64.deb && sudo dpkg -i git-delta_0.4.3_amd64.deb, Installing git-delta]
+    - [wget https://github.com/sharkdp/bat/releases/download/v0.16.0/bat_0.16.0_amd64.deb && sudo dpkg -i bat_0.16.0_amd64.deb, Installing bat]

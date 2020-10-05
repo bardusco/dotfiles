@@ -96,7 +96,7 @@ export PATH=~/Dropbox/Scripts:$PATH
 # powerline
 export PATH=~/.local/bin:$PATH
 export PYTHONPATH=$PYTHONPATH:~/.local/lib/python2.7/site-packages/
-source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+source ~/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
 
 ##
 # Your previous /Users/bardusco/.bash_profile file was backed up as /Users/bardusco/.bash_profile.macports-saved_2013-05-18_at_12:08:45

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -e
+
+DOTBOT_DIR="dotbot"
+
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+cd "${BASEDIR}"
+git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+git submodule update --init --recursive "${DOTBOT_DIR}"
+
+# OS specific commands
+case `uname` in
+  Darwin)
+    CONFIG="install.conf.darwin.yaml"
+  ;;
+  Linux)
+    CONFIG="install.conf.debian.yaml"
+  ;;
+esac
+
+echo
+echo "========== RUNNING OS SPECIFIC COMMANDS =========="
+echo
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -c "${CONFIG}" -d home -p "${BASEDIR}/${DOTBOT_DIR}/dotbot-brew/brew.py"
+
+echo
+echo "========== RUNNING COMMON COMMANDS =========="
+echo
+CONFIG="install.conf.yaml"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -c "${CONFIG}" -d home
