@@ -1,11 +1,25 @@
 Bardusco's dotfiles
 ===================
 
-This repo is compatible with [homeshick](https://github.com/andsens/homeshick), so please make sure to install it first.
+This repo uses [dotbot](https://github.com/anishathalye/dotbot) to sync dotfiles
 
-and then just do:
+Usage
+===================
+git clone git@github.com:bardusco/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./install -d home
 
-	curl -sL https://raw.github.com/bardusco/dotfiles/master/setup.sh|bash
+To use on ChromeOS, configure the fonts:
 
-Configure fonts:
-http://powerline.readthedocs.org/en/latest/installation/osx.html
+chromeos ssh app:
+
+Go to settings
+chrome-extension://pnhechapfaindjhompbnflcldabbghjo/html/nassh_preferences_editor.html
+
+Add a custom css file
+https://cdn.jsdelivr.net/gh/bardusco/powerline-web-fonts@49d9b5ee3fb0cf1869a90f8af696a1fad4526dd7/PowerlineFonts.css
+
+Select the font family:
+"MesloLGS NF for Powerline"
+
+https://github.com/bardusco/powerline-web-fonts
