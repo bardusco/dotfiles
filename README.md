@@ -5,7 +5,7 @@ This repo uses [dotbot](https://github.com/anishathalye/dotbot) as a submodule t
 ## Usage
 * git clone git@github.com:bardusco/dotfiles.git ~/dotfiles
 * cd ~/dotfiles
-* ./install -d home
+* ./install
 
 
 ### Configure the fonts:
