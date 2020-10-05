@@ -43,3 +43,7 @@
     ~/.vimrc                                     : .vimrc
     ~/.zshrc                                     : .zshrc
     ~/powerlevel10k                              : powerlevel10k
+    ~/.fonts                                     : .fonts
+
+- shell:
+  - [fc-cache -f -v, Updating font cache]
