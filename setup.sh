@@ -3,7 +3,7 @@
 # install porwerline ang gnu command line utilities on MAC
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     sudo apt-get install python2 python3 git fzf npm zsh zsh-syntax-highlighting neovim virtualenv fd-find ruby
-    gem install homesick
+    sudo gem install homesick
     mkdir ~/.virtualenvs 
     virtualenv ~/.virtualenvs/neovim2 -p python2
     virtualenv ~/.virtualenvs/neovim3 -p python3
