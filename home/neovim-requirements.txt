@@ -1,3 +1,6 @@
 neovim
 jedi
 flake8
+yapf
+isort
+rope
