@@ -14,29 +14,29 @@
 - shell:
      - [git submodule update --init --recursive, Installing submodules]
      - [
-           git clone https://github.com/zsh-users/zsh-autosuggestions .oh-my-zsh/custom/plugins/zsh-autosuggestions,
-           Installing zsh-autosuggestions,
+        git clone https://github.com/zsh-users/zsh-autosuggestions .oh-my-zsh/custom/plugins/zsh-autosuggestions,
+        Installing zsh-autosuggestions,
        ]
      - [
-           git clone https://github.com/wfxr/forgit.git $HOME/forgit,
-           Installing forgit,
+        git clone https://github.com/wfxr/forgit.git $HOME/forgit,
+        Installing forgit,
        ]
      - [
-           virtualenv ~/.virtualenvs/neovim2 -p python2,
-           Installing virtualenv2 for neovim,
+        virtualenv ~/.virtualenvs/neovim2 -p python2,
+        Installing virtualenv2 for neovim,
        ]
      - [
-           virtualenv ~/.virtualenvs/neovim3 -p python3,
-           Installing virtualenv3 for neovim,
+        virtualenv ~/.virtualenvs/neovim3 -p python3,
+        Installing virtualenv3 for neovim,
        ]
      - [
-           source ~/.virtualenvs/neovim2/bin/activate && pip install -r neovim-requirements.txt,
+        . ~/.virtualenvs/neovim2/bin/activate && pip install -r neovim-requirements.txt,
        ]
      - [
-           source ~/.virtualenvs/neovim3/bin/activate && pip install -r neovim-requirements.txt,
+        . ~/.virtualenvs/neovim3/bin/activate && pip install -r neovim-requirements.txt,
        ]
-     - [source ~/.virtualenvs/neovim2/bin/activate && pip install -r neovim-requirements.txt]
-     - [source ~/.virtualenvs/neovim3/bin/activate && pip install -r neovim-requirements.txt]
+     - [. ~/.virtualenvs/neovim2/bin/activate && pip install -r neovim-requirements.txt]
+     - [. ~/.virtualenvs/neovim3/bin/activate && pip install -r neovim-requirements.txt]
      - [python3 -m pip install psutil]
      - [python3 -m pip install pygit2]
      - [python3 -m pip install virtualenvwrapper]
