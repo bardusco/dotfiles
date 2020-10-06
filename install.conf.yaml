@@ -37,10 +37,12 @@
        ]
      - [source ~/.virtualenvs/neovim2/bin/activate && pip install -r neovim-requirements.txt]
      - [source ~/.virtualenvs/neovim3/bin/activate && pip install -r neovim-requirements.txt]
-     - [pip3 install psutil]
-     - [pip3 install pygit2]
-     - [pip3 install virtualenvwrapper]
-     - [pip install --user git+git://github.com/powerline/powerline]
+     - [python3 -m pip install psutil]
+     - [python3 -m pip install pygit2]
+     - [python3 -m pip install virtualenvwrapper]
+     - [python3 -m pip install --user git+git://github.com/powerline/powerline]
+     - [sudo npm install -g neovim]
+     - [sudo gem install neovim]
 
 - link:
      ~/.bash_aliases                              : .bash_aliases
@@ -50,6 +52,7 @@
      ~/.bash_profile-ubuntu                       : .bash_profile-ubuntu
      ~/.bashrc                                    : .bashrc
      ~/.config/nvim/init.vim                      : .config/nvim/init.vim
+     ~/.config/nvim/coc-settings.json             : .config/nvim/coc-settings.json
      ~/.dircolors                                 : .dircolors
      ~/.fzf.zsh                                   : .fzf.zsh
      ~/.fzf.bash                                  : .fzf.bash
