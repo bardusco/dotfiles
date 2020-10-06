@@ -24,7 +24,7 @@ esac
 echo
 echo "========== RUNNING OS SPECIFIC COMMANDS =========="
 echo
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -c "${CONFIG}" -d home -p "${BASEDIR}/${DOTBOT_DIR}/dotbot-brew/brew.py"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -c "${CONFIG}" -d home -p "${BASEDIR}/dotbot-brew/brew.py"
 
 echo
 echo "========== RUNNING COMMON COMMANDS =========="
