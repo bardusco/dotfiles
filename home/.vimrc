@@ -92,6 +92,8 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 " theme
 Plug 'morhetz/gruvbox'
 
+Plug 'cespare/vim-toml'
+
 " fuzzy search
 " usage : <C-p> to search files on current directory recursively
 " https://github.com/junegunn/fzf.vim
@@ -426,7 +428,7 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 command! -nargs=0 Format :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
-" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
@@ -457,7 +459,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "
 " }}}
 " ============================================================================
-"
+
 " }}}
 " ============================================================================
 
