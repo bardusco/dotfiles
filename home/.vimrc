@@ -18,8 +18,15 @@ set termguicolors
 set updatetime=100
 
 " virtualenvs for neovim
-let g:python3_host_prog = '~/.virtualenvs/neovim3/bin/python3'
-let g:python_host_prog = '~/.virtualenvs/neovim2/bin/python2'
+"let g:python3_host_prog = '~/.virtualenvs/neovim3/bin/python3'
+"let g:python_host_prog = '~/.virtualenvs/neovim2/bin/python2'
+
+" Define prefix dictionary
+let g:which_key_map =  {}
+let g:which_local_key_map =  {}
+
+let g:mapleader = "\<Space>"
+let g:maplocalleader = '\'
 
 " ============================================================================
 " Setting up tab settings {{{
@@ -46,7 +53,7 @@ set smarttab
 set foldmethod=syntax
 set foldlevel=99
 " Enable folding with the spacebar
-nnoremap <space> za
+"nnoremap <space> za
 
 " ============================================================================
 " }}}
@@ -61,8 +68,12 @@ set cursorline
 hi clear CursorLine
 hi CursorLine ctermbg=8
 hi CursorLineNr term=bold cterm=bold ctermfg=2 ctermbg=8
-nnoremap <Leader>c :set cursorline!<CR>
-nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
+
+let g:which_local_key_map.c = 'toogle-cursor-line'
+nnoremap <LocalLeader>c :set cursorline!<CR>
+
+let g:which_local_key_map.l = 'mark-line'
+nnoremap <silent> <LocalLeader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 
 " ============================================================================
 " }}}
@@ -88,6 +99,8 @@ Plug 'zhimsel/vim-stay'
 
 " statusline
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+
+Plug 'petobens/poet-v'
 
 " theme
 Plug 'morhetz/gruvbox'
@@ -115,7 +128,7 @@ Plug 'preservim/nerdtree'                          , {'on': 'NERDTreeToggle'}
 " TODO: fazer o patch da font para melhorar a visualização das barras
 Plug 'Yggdroot/indentLine'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-python coc-snippets'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-python coc-snippets coc-emoji'}
 
 Plug 'honza/vim-snippets'
 
@@ -143,6 +156,10 @@ Plug 'brooth/far.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
+
+Plug 'liuchengxu/vim-which-key'
+
+Plug 'godlygeek/tabular'
 
 "Plug 'ervandew/supertab'
 call plug#end()
@@ -215,6 +232,8 @@ let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs neede
 let g:airline#extensions#tabline#show_splits = 1       " disables the buffer name that displays on the right of the tabline               
 let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers                                                              
 let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#poetv#enabled = 1
 
 " }}}
 " ============================================================================
@@ -223,12 +242,15 @@ let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird orna
 " Tabularize {{{
 " ============================================================================
 
-if exists(":Tabularize")
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    nmap <Leader>a: :Tabularize /:\zs<CR>
-    vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
+nmap <LocalLeader>t= :Tabularize /=<CR>
+vmap <LocalLeader>t= :Tabularize /=<CR>
+nmap <LocalLeader>t: :Tabularize /:\zs<CR>
+vmap <LocalLeader>t: :Tabularize /:\zs<CR>
+let g:which_local_key_map.t = {
+    \ 'name' : '+tabularize',
+    \ '=' : [':Tabularize /=<CR>','tabularize on ='],
+    \ ':' : [':Tabularize /:\zs<CR>', 'tabularize on :'],
+    \ }
 
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 function! s:align()
@@ -440,7 +462,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
@@ -454,9 +476,65 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <space>r  :<C-u>CocListResume<CR>
 " END OF COC-VIM
 "
+" }}}
+" ============================================================================
+
+" ============================================================================
+" Poet-v - poetry vim {{{
+" ============================================================================
+
+let poetv_executables = ['poetry']
+let poetv_auto_activate = 0
+let poetv_statusline_symbol = ''
+let poetv_set_environment = 1
+
+"}}}
+" ============================================================================
+
+" ============================================================================
+" Which key {{{
+" ============================================================================
+
+
+call which_key#register('<Space>', "g:which_key_map")
+call which_key#register('\', "g:which_local_key_map")
+
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader>      :<c-u>WhichKeyVisual '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  '\'<CR>
+vnoremap <silent> <localleader> :<c-u>WhichKeyVisual  '\'<CR>
+
+" Second level dictionaries:
+" 'name' is a special field. It will define the name of the group, e.g., leader-f is the "+file" group.
+" Unnamed groups will show a default empty string.
+
+" =======================================================
+" Create menus not based on existing mappings:
+" =======================================================
+" Provide commands(ex-command, <Plug>/<C-W>/<C-d> mapping, etc.)
+" and descriptions for the existing mappings.
+"
+" Note:
+" Some complicated ex-cmd may not work as expected since they'll be
+" feed into `feedkeys()`, in which case you have to define a decicated
+" Command or function wrapper to make it work with vim-which-key.
+" Ref issue #126, #133 etc.
+let g:which_key_map.b = {
+    \ 'name' : '+buffer' ,
+    \ '1' : ['b1'        , 'buffer 1']        ,
+    \ '2' : ['b2'        , 'buffer 2']        ,
+    \ 'd' : ['bd'        , 'delete-buffer']   ,
+    \ 'f' : ['bfirst'    , 'first-buffer']    ,
+    \ 'h' : ['Startify'  , 'home-buffer']     ,
+    \ 'l' : ['blast'     , 'last-buffer']     ,
+    \ 'n' : ['bnext'     , 'next-buffer']     ,
+    \ 'p' : ['bprevious' , 'previous-buffer'] ,
+    \ '?' : ['Buffers'   , 'fzf-buffer']      ,
+    \ }
+
 " }}}
 " ============================================================================
 
@@ -476,6 +554,8 @@ nnoremap <S-n> :bprev<CR>
 map j !python -m json.tool
 
 autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr><C-o>
+autocmd FileType python let g:which_local_key_map.y = 'format yaf'
+
 autocmd VimEnter * AirlineRefresh
 
 " }}}
