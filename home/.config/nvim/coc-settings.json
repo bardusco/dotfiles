@@ -1,9 +1,17 @@
 {
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true,
-    "python.pythonPath": "~/.virtualenvs/neovim3/bin/python",
-    "python.jediPath": "~/.virtualenvs/neovim3/lib/python3.8/site-packages",
-    "python.formatting.provider": "yapf",
-    "python.venvFolders": ["envs", ".env", ".env3", ".pyenv", ".direnv"]
+  "python.venvFolders": [
+    ".pyenv",
+    ".env3",
+    ".direnv",
+    "~/.virtualenvs",
+    "~/.cache/pypoetry/virtualenvs"
+  ],
+  "python.linting.pylintEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "python.pythonPath": "~/.virtualenvs/neovim3/bin/python",
+  "python.jediEnabled": true,
+  "python.formatting.provider": "yapf",
+  "coc.preferences.formatOnSaveFiletypes": ["css", "json", "markdown"],
+  "git.enableGutters": true
 }
