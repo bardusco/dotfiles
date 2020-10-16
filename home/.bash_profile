@@ -124,3 +124,5 @@ alias vim=nvim
 
 source $HOME/forgit/forgit.plugin.zsh
 
+
+export PATH="$HOME/.poetry/bin:$PATH"
