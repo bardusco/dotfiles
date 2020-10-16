@@ -1,5 +1,6 @@
 neovim
 jedi
+pylint
 flake8
 yapf
 isort

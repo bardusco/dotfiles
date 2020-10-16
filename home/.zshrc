@@ -78,6 +78,8 @@ export ZSH="$HOME/.oh-my-zsh"
 plugins=(
     git
     zsh-autosuggestions
+    vi-mode
+    poetry
 )
 
 source ~/.oh-my-zsh.sh
@@ -132,14 +134,14 @@ case `uname` in
   Darwin)
     # commands for OS X go here
     export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS" --pointer='▶' --marker='✓' --info=inline"
-    export FZF_DEFAULT_COMMAND="fd --type f"
+    export FZF_DEFAULT_COMMAND="fd --type f -H"
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     # gnu utilities first in PATH
     export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
   ;;
   Linux)
     # commands for Linux go here
-    export FZF_DEFAULT_COMMAND="fdfind --type f"
+    export FZF_DEFAULT_COMMAND="fdfind --type f -H"
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   ;;
 esac
@@ -147,6 +149,9 @@ esac
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
-alias vim=nvim
+alias vim=/snap/bin/nvim
 
 source $HOME/forgit/forgit.plugin.zsh
+
+export PATH="$HOME/.poetry/bin:$PATH"
+fpath+=~/.zfunc
