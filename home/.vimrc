@@ -16,6 +16,7 @@ set termguicolors
 
 " update time for Jedi #coc-vim
 set updatetime=100
+set colorcolumn=79
 
 " virtualenvs for neovim
 "let g:python3_host_prog = '~/.virtualenvs/neovim3/bin/python3'
@@ -128,7 +129,8 @@ Plug 'preservim/nerdtree'                          , {'on': 'NERDTreeToggle'}
 " TODO: fazer o patch da font para melhorar a visualização das barras
 Plug 'Yggdroot/indentLine'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-python coc-snippets coc-emoji'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-python coc-snippets coc-emoji coc-prettier'}
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 Plug 'honza/vim-snippets'
 
@@ -140,9 +142,9 @@ Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server', 'on': 'Bracey'}
 
 " https://github.com/prettier/vim-prettier
 " usage :Prettier or <leader>p 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/1.x', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'branch': 'release/1.x', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html', 'toml'] }
+" let g:prettier#autoformat = 1
+" #autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " Python folding that works
 Plug 'tmhedberg/SimpylFold' 
@@ -185,11 +187,25 @@ autocmd vimenter * colorscheme gruvbox
 " ============================================================================
 " Far - find and replace {{{
 " ============================================================================
-"
-let g:far#enable_undo=1
+
+let g:far#source='rgnvim'
+" let g:far#source='rg'
+" let g:far#source='vimgrep'
+" let g:far#source='ag'
+
 set lazyredraw            " improve scrolling performance when navigating through large results
-set regexpengine=1        " use old regexp engine
-set ignorecase smartcase  " ignore case only when the pattern contains no capital letters
+
+let g:far#window_width=60
+" Use %:p with buffer option only
+let g:far#file_mask_favorites=['%:p', '**/*.*', '**/*.js', '**/*.py', '**/*.java', '**/*.css', '**/*.html', '**/*.vim', '**/*.cpp', '**/*.c', '**/*.h', ]
+let g:far#window_min_content_width=30
+let g:far#enable_undo=1
+
+let g:which_local_key_map.f = {
+      \ 'name' : '+find & replace' ,
+      \ 'b' : [':Farr --source=vimgrep'    , 'buffer'],
+      \ 'p' : [':Farr --source=rgnvim'     , 'project'],
+      \ }
 
 " }}}
 " ============================================================================
@@ -554,7 +570,10 @@ nnoremap <S-n> :bprev<CR>
 map j !python -m json.tool
 
 autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr><C-o>
-autocmd FileType python let g:which_local_key_map.y = 'format yaf'
+autocmd FileType python let g:which_key_map.y = 'format yaf'
+
+autocmd FileType toml nnoremap <leader>f :0,$!prettier --parser toml<Cr><C-o>
+autocmd FileType toml let g:which_key_map.f = 'format toml'
 
 autocmd VimEnter * AirlineRefresh
 
