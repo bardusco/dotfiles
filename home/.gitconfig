@@ -49,7 +49,7 @@
     keepBackup = false
 
 [core]
-    pager = delta
+    pager = delta --width 180
 
 [interactive]
     diffFilter = delta --color-only
