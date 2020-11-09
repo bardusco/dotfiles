@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export PATH="$HOME/.poetry/bin:$PATH"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -79,7 +81,6 @@ plugins=(
     git
     zsh-autosuggestions
     vi-mode
-    poetry
 )
 
 source ~/.oh-my-zsh.sh
@@ -133,25 +134,25 @@ export FZF_DEFAULT_OPTS="
 case `uname` in
   Darwin)
     # commands for OS X go here
+    alias python=/usr/local/bin/python3
     export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS" --pointer='▶' --marker='✓' --info=inline"
     export FZF_DEFAULT_COMMAND="fd --type f -H"
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     # gnu utilities first in PATH
     export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+    alias vim=/usr/local/bin/nvim
   ;;
   Linux)
     # commands for Linux go here
     export FZF_DEFAULT_COMMAND="fdfind --type f -H"
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    alias vim=/snap/bin/nvim
   ;;
 esac
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
-alias vim=/snap/bin/nvim
-
 source $HOME/forgit/forgit.plugin.zsh
 
-export PATH="$HOME/.poetry/bin:$PATH"
 fpath+=~/.zfunc
