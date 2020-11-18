@@ -567,7 +567,7 @@ map <C-g> :FZFGrep<CR>
 nnoremap <S-m> :bnext<CR>
 nnoremap <S-n> :bprev<CR>
 
-map j !python -m json.tool
+map j !python -m json.tool<CR>
 
 autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr><C-o>
 autocmd FileType python let g:which_key_map.y = 'format yaf'

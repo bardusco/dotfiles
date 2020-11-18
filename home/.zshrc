@@ -155,3 +155,6 @@ source $HOME/forgit/forgit.plugin.zsh
 
 export PATH="$HOME/.poetry/bin:$PATH"
 fpath+=~/.zfunc
+
+# enable advanced command completion
+autoload -Uz compinit && compinit
