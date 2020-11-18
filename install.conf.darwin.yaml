@@ -8,12 +8,16 @@
 
 - brew:
       - coreutils
+      - bat
       - binutils
       - diffutils
       - ed
+      - fd
       - findutils
+      - fzf
       - gawk
       - git
+      - git-delta
       - gnu-indent
       - gnu-sed
       - gnu-tar
@@ -23,6 +27,10 @@
       - gzip
       - htop
       - libgit2
+      - npm
+      - nvim
+      - python
+      - zsh-syntax-highlighting
       - screen
       - watch
       - wdiff

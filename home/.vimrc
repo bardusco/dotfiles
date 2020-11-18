@@ -19,8 +19,8 @@ set updatetime=100
 set colorcolumn=79
 
 " virtualenvs for neovim
-"let g:python3_host_prog = '~/.virtualenvs/neovim3/bin/python3'
-"let g:python_host_prog = '~/.virtualenvs/neovim2/bin/python2'
+let g:python3_host_prog = '~/.virtualenvs/neovim3/bin/python3'
+let g:python_host_prog = '~/.virtualenvs/neovim2/bin/python2'
 
 " Define prefix dictionary
 let g:which_key_map =  {}
