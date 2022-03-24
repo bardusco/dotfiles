@@ -40,7 +40,7 @@
      - [python3 -m pip install psutil]
      - [python3 -m pip install pygit2]
      - [python3 -m pip install virtualenvwrapper]
-     - [python3 -m pip install --user git+git://github.com/powerline/powerline]
+     - [python3 -m pip install --user powerline-status]
      - [sudo npm install -g neovim]
      - [sudo gem install neovim]
      - [curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -]
