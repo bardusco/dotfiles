@@ -43,7 +43,7 @@
      - [python3 -m pip install --user powerline-status]
      - [sudo npm install -g neovim]
      - [sudo gem install neovim]
-     - [python3 -m pip install poetry.py]
+     - [curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -]
 
 - link:
      ~/.bash_aliases                              : .bash_aliases
