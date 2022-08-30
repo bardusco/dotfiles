@@ -159,3 +159,6 @@ fpath+=~/.zfunc
 
 # enable advanced command completion
 autoload -Uz compinit && compinit
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
