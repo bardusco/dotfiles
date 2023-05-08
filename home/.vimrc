@@ -129,7 +129,7 @@ Plug 'preservim/nerdtree'                          , {'on': 'NERDTreeToggle'}
 " TODO: fazer o patch da font para melhorar a visualização das barras
 Plug 'Yggdroot/indentLine'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-python coc-snippets coc-emoji coc-prettier'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':CocInstall coc-pyright coc-snippets coc-emoji coc-prettier'}
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 Plug 'honza/vim-snippets'
@@ -162,6 +162,23 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'liuchengxu/vim-which-key'
 
 Plug 'godlygeek/tabular'
+
+Plug 'oelmekki/make-my-code-better.vim'
+
+Plug '0xStabby/chatgpt-vim'
+
+" ChatGPT dependencies
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'MunifTanjim/nui.nvim'
+" ChatGPT
+Plug 'jackMort/ChatGPT.nvim'
+
+" Dart
+Plug 'dart-lang/dart-vim-plugin'
+
+" Para detectar virtual env do python e usar os linters corretos
+Plug 'dense-analysis/ale'
 
 "Plug 'ervandew/supertab'
 call plug#end()
@@ -496,6 +513,10 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>r  :<C-u>CocListResume<CR>
+"
+" Configurar coc-pyright
+let g:coc_global_extensions = ['coc-pyright']
+
 " END OF COC-VIM
 "
 " }}}
@@ -512,6 +533,18 @@ let poetv_set_environment = 1
 
 "}}}
 " ============================================================================
+
+" ============================================================================
+" DART vim {{{
+" ============================================================================
+
+let dart_html_in_string=v:true
+let g:dart_style_guide = 2
+let g:dart_format_on_save = 1
+
+"}}}
+" ============================================================================
+
 
 " ============================================================================
 " Which key {{{
@@ -556,6 +589,34 @@ let g:which_key_map.b = {
 
 " }}}
 " ============================================================================
+
+" ============================================================================
+" Which key {{{
+" ============================================================================
+let g:open_ai_key="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" 
+" }}}
+" ============================================================================
+
+" ============================================================================
+" Ale {{{
+" ============================================================================
+function! VirtualEnvLinterPath(linter) abort
+    let l:venv = expand('$VIRTUAL_ENV')
+    if !empty(l:venv)
+        let l:executable = l:venv . '/bin/' . a:linter
+        if filereadable(l:executable)
+            return l:executable
+        endif
+    endif
+    return a:linter
+endfunction
+
+let g:ale_python_flake8_executable = VirtualEnvLinterPath('flake8')
+let g:ale_python_pylint_executable = VirtualEnvLinterPath('pylint')
+
+" }}}
+" ============================================================================
+
 
 " }}}
 " ============================================================================
@@ -611,4 +672,14 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 " }}}
 " ============================================================================
 
+
+lua <<EOF
+-- chat gpt
+require("chatgpt").setup({
+    keymaps = {
+        submit = "<C-s>",
+        cycle_windows = "<C-l>"
+    }
+})
+EOF
 

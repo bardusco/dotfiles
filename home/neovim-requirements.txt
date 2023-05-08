@@ -5,3 +5,5 @@ flake8
 yapf
 isort
 rope
+openai
+openai-cli

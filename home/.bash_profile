@@ -98,7 +98,7 @@ export PATH=~/Dropbox/Scripts:$PATH
 # powerline
 export PATH=~/.local/bin:$PATH
 export PYTHONPATH=$PYTHONPATH:~/.local/lib/python3.8/site-packages
-source ~/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
+source /usr/share/powerline/bindings/bash/powerline.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

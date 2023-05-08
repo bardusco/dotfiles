@@ -73,3 +73,5 @@
     line-numbers-plus-style = 28
 [pull]
 	rebase = false
+[safe]
+	directory = /usr/src/rtl88x2bu-git
