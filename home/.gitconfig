@@ -49,7 +49,8 @@
     keepBackup = false
 
 [core]
-    pager = delta --width 180
+    #pager = delta --width 180
+	editor = nvim
 
 [interactive]
     diffFilter = delta --color-only
@@ -75,3 +76,5 @@
 	rebase = false
 [safe]
 	directory = /usr/src/rtl88x2bu-git
+[init]
+	defaultBranch = main
