@@ -164,3 +164,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$HOME/.virtualenvs/neovim3/bin:$PATH"
+export OPENAI_API_KEY="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"
+export OPENAI_API_HOST="https://api.openai.com"
