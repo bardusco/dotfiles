@@ -43,6 +43,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -164,3 +165,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$HOME/.virtualenvs/neovim3/bin:$PATH"
+export PATH="$PATH:/snap/bin"
+export PATH="$HOME/.poetry/bin:$PATH"
+alias lzd='lazydocker'
