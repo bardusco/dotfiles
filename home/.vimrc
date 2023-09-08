@@ -200,6 +200,8 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 
+Plug 'psf/black', { 'branch': 'stable' }
+
 "Plug 'ervandew/supertab'
 call plug#end()
 
@@ -645,6 +647,13 @@ let g:ale_python_pylint_executable = VirtualEnvLinterPath('pylint')
 nnoremap <silent> <leader>n :ALENext<CR>
 nnoremap <silent> <leader>p :ALEPrevious<CR>
 
+" }}}
+" ============================================================================
+
+" ============================================================================
+" Black {{{
+" ============================================================================
+let g:black_linelength = 79
 " }}}
 " ============================================================================
 
