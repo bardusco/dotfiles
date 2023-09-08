@@ -171,14 +171,34 @@ Plug '0xStabby/chatgpt-vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'MunifTanjim/nui.nvim'
+
 " ChatGPT
 Plug 'jackMort/ChatGPT.nvim'
 
-" Dart
-Plug 'dart-lang/dart-vim-plugin'
+" vim-ai
+Plug 'madox2/vim-ai'
 
 " Para detectar virtual env do python e usar os linters corretos
 Plug 'dense-analysis/ale'
+
+" Para debugar código python no vim
+Plug 'puremourning/vimspector'
+Plug 'sagi-z/vimspectorpy', { 'do': { -> vimspectorpy#update() } }
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-pack/nvim-spectre'
+
+" Dart/Flutter
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'stevearc/dressing.nvim' " optional for vim.ui.select
+Plug 'akinsho/flutter-tools.nvim'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
+
+" Mason package installer
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
 
 "Plug 'ervandew/supertab'
 call plug#end()
@@ -591,9 +611,17 @@ let g:which_key_map.b = {
 " ============================================================================
 
 " ============================================================================
-" Which key {{{
+" Open AI {{{
 " ============================================================================
-let g:open_ai_key="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" 
+let g:open_ai_key = getenv(OPENAI_API_KEY)
+" }}}
+" ============================================================================
+"
+" ============================================================================
+" Vim Spectre {{{
+" ============================================================================
+
+
 " }}}
 " ============================================================================
 
@@ -614,6 +642,146 @@ endfunction
 let g:ale_python_flake8_executable = VirtualEnvLinterPath('flake8')
 let g:ale_python_pylint_executable = VirtualEnvLinterPath('pylint')
 
+nnoremap <silent> <leader>n :ALENext<CR>
+nnoremap <silent> <leader>p :ALEPrevious<CR>
+
+" }}}
+" ============================================================================
+
+" ============================================================================
+" VIM-AI {{{
+" ============================================================================
+" :AI
+" - engine: complete | chat - see how to configure chat engine in the section below
+" - options: openai config (see https://platform.openai.com/docs/api-reference/completions)
+" - options.request_timeout: request timeout in seconds
+" - options.selection_boundary: seleciton prompt wrapper (eliminates empty responses, see #20)
+" - ui.paste_mode: use paste mode (see more info in the Notes below)
+let g:vim_ai_complete = {
+\  "engine": "complete",
+\  "options": {
+\    "model": "text-davinci-003",
+\    "max_tokens": 1000,
+\    "temperature": 0.1,
+\    "request_timeout": 20,
+\    "selection_boundary": "#####",
+\  },
+\  "ui": {
+\    "paste_mode": 1,
+\  },
+\}
+" 
+" :AIEdit
+" - engine: complete | chat - see how to configure chat engine in the section below
+" - options: openai config (see https://platform.openai.com/docs/api-reference/completions)
+" - options.request_timeout: request timeout in seconds
+" - options.selection_boundary: seleciton prompt wrapper
+" - ui.paste_mode: use paste mode (see more info in the Notes below)
+let g:vim_ai_edit = {
+\  "engine": "complete",
+\  "options": {
+\    "model": "text-davinci-003",
+\    "max_tokens": 1000,
+\    "temperature": 0.1,
+\    "request_timeout": 20,
+\    "selection_boundary": "#####",
+\  },
+\  "ui": {
+\    "paste_mode": 1,
+\  },
+\}
+" 
+" This prompt instructs model to work with syntax highlighting
+let s:initial_chat_prompt =<< trim END
+>>> system
+
+You are a general assistant.
+If you attach a code block add syntax type after ``` to enable syntax highlighting.
+END
+
+" :AIChat
+" - options: openai config (see https://platform.openai.com/docs/api-reference/chat)
+" - options.initial_prompt: prompt prepended to every chat request
+" - options.request_timeout: request timeout in seconds
+" - options.selection_boundary: seleciton prompt wrapper
+" - ui.populate_options: put [chat-options] to the chat header
+" - ui.open_chat_command: preset (preset_below, preset_tab, preset_right) or a custom command
+" - ui.scratch_buffer_keep_open: re-use scratch buffer within the vim session
+" - ui.paste_mode: use paste mode (see more info in the Notes below)
+let g:vim_ai_chat = {
+\  "options": {
+\    "model": "gpt-4",
+\    "max_tokens": 4000,
+\    "temperature": 0.8,
+\    "request_timeout": 20,
+\    "selection_boundary": "",
+\    "initial_prompt": s:initial_chat_prompt,
+\  },
+\  "ui": {
+\    "code_syntax_enabled": 1,
+\    "populate_options": 0,
+\    "open_chat_command": "preset_below",
+\    "scratch_buffer_keep_open": 0,
+\    "paste_mode": 1,
+\  },
+\}
+
+let initial_prompt =<< trim END
+>>> system
+
+You are going to play a role of a completion engine with following parameters:
+Task: Provide compact code/text completion, generation, transformation or explanation
+Topic: general programming and text editing
+Style: Plain result without any commentary, unless commentary is necessary
+Audience: Users of text editor and programmers that need to transform/generate text
+END
+
+let chat_engine_config = {
+\  "engine": "chat",
+\  "options": {
+\    "model": "gpt-3.5-turbo",
+\    "max_tokens": 2000,
+\    "temperature": 0.7,
+\    "request_timeout": 20,
+\    "selection_boundary": "",
+\    "initial_prompt": initial_prompt,
+\  },
+\}
+
+" let g:vim_ai_complete = chat_engine_config
+" let g:vim_ai_edit = chat_engine_config
+
+" custom command suggesting git commit message, takes no arguments
+function! GitCommitMessageFn()
+  let l:diff = system('git --no-pager diff --staged')
+  let l:prompt = "generate a short commit message from the diff below:\n" . l:diff
+  let l:range = 0
+  let l:config = {
+  \  "engine": "chat",
+  \  "options": {
+  \    "model": "gpt-3.5-turbo",
+  \    "initial_prompt": ">>> system\nyou are a code assistant",
+  \    "temperature": 1,
+  \  },
+  \}
+  call vim_ai#AIRun(l:range, l:config, l:prompt)
+endfunction
+command! GitCommitMessage call GitCommitMessageFn()
+
+" Notes:
+" ui.paste_mode
+" - if disabled code indentation will work but AI doesn't always respond with a code block
+"   therefore it could be messed up
+" - find out more in vim's help `:help paste`
+" }}}
+" ============================================================================
+"
+" ============================================================================
+" VimInspector {{{
+" ============================================================================
+let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspectorpy#launcher = "tmux"
+let g:vimspectorpy#tmux#split = "h"
 " }}}
 " ============================================================================
 
@@ -681,5 +849,34 @@ require("chatgpt").setup({
         cycle_windows = "<C-l>"
     }
 })
-EOF
 
+-- mason
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
+require("mason-lspconfig").setup()
+
+-- flutter-tools
+require("flutter-tools").setup {
+    widget_guides = {
+    enabled = true,
+  },
+  lsp = {
+    color = { -- show the derived colours for dart variables
+      enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+      background = false, -- highlight the background
+      background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
+      foreground = false, -- highlight the foreground
+      virtual_text = true, -- show the highlight using virtual text
+      virtual_text_str = "■", -- the virtual text character to highlight
+    }
+  }
+}
+
+EOF
