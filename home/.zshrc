@@ -167,3 +167,4 @@ export PATH="$HOME/.virtualenvs/neovim3/bin:$PATH"
 export PATH="$PATH:/snap/bin"
 export PATH="$HOME/.poetry/bin:$PATH"
 alias lzd='lazydocker'
+export OPENAI_API_HOST="https://api.openai.com"
