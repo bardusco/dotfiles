@@ -22,6 +22,9 @@ set colorcolumn=79
 let g:python3_host_prog = '~/.virtualenvs/neovim3/bin/python3'
 let g:python_host_prog = '~/.virtualenvs/neovim2/bin/python2'
 
+" disbale perl provider
+let g:loaded_perl_provider = 0
+
 " Define prefix dictionary
 let g:which_key_map =  {}
 let g:which_local_key_map =  {}
@@ -194,6 +197,8 @@ Plug 'stevearc/dressing.nvim' " optional for vim.ui.select
 Plug 'akinsho/flutter-tools.nvim'
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Mason package installer
 Plug 'williamboman/mason.nvim'
