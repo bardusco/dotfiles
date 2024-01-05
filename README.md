@@ -39,16 +39,20 @@ Select the font family:
 
 https://github.com/bardusco/powerline-web-fonts
 
+### Download the latest neovim
+```
+wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+sudo mkdir /Applications
+sudo mv nvim.appimage /Applications/.
+sudo chmod 755 /Applications/nvim.appimage
+
+sudo update-alternatives --install /usr/bin/vi vi /Applications/nvim.appimage 100
+sudo update-alternatives --install /usr/bin/vim vim /Applications/nvim.appimage 100
+sudo update-alternatives --install /usr/bin/editor editor /Applications/nvim.appimage 100
+```
+
 ### Configure vim
-
-## vim
-
-`:PlugInstall`
-`:PlugUpdate`
-
-`:TSInstall all`
-`:TSUpdate`
-to update languages in nvim-treesitter
+`git clone https://github.com/bardusco/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim`
 
 `:checkhealth`
 to search for any problem
